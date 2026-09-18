@@ -10,21 +10,28 @@ public class Word
 
     public void Hide()
     {
-
+        _isHidden = true;
     }
 
     public void Show()
     {
-
+        _isHidden = false;
     }
 
-    private bool IsHidden()
+    public bool IsHidden() //basically a 'getter'
     {
-
+        return _isHidden;
     }
 
     public string GetDisplayText()
     {
-
+        if (IsHidden())
+        {
+            return new string('_', _text.Length);
+        }
+        else
+        {
+            return _text;
+        }
     }
 }
