@@ -17,8 +17,22 @@ public class Scripture
 
     public void HideRandomWords(int numberToHide)
     {
-        Random random = new Random()
-        [_words.Length]
+        Random random = new Random();
+
+        for (int i = 0; i < numberToHide; i++)
+        {
+            int index = random.Next(_words.Count);
+            Word word = _words[index];
+            word.Hide();
+        }
+    }
+
+    public void ShowAllWords()
+    {
+        foreach (Word word in _words)
+        {
+            word.Show();
+        }
     }
 
     public string GetDisplayText()
@@ -26,7 +40,7 @@ public class Scripture
         string text = _reference.GetDisplayText();
         foreach (Word word in _words)
         {
-            text = text + word.GetDisplayText();
+            text = text + word.GetDisplayText() + " ";
         }
         return text;
     }
