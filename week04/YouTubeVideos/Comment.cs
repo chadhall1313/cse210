@@ -21,7 +21,7 @@ public class Comment
 
     public string DisplayComment()
     {
-        return $"\n{GetName()} | {GetText()}";
+        return $"{GetName()} | {GetText()}";
     }
 
 }   
