@@ -11,21 +11,42 @@ public class ChecklistGoal : Goal
         _target = target;
         _bonus = bonus;
     }
-    public override void RecordEvent()
-    {
 
+    public ChecklistGoal(string name, string description, int points, int amountCompleted, int target, int bonus) : base(name, description, points)
+    {
+        _amountCompleted = amountCompleted;
+        _target = target;
+        _bonus = bonus;
+    }
+    public override int RecordEvent()
+    {
+        _amountCompleted += 1;
+        if (_amountCompleted == _target)
+        {
+            return _points + _bonus;
+        }
+        else
+        {
+            return _points;
+        }
     }
     public override bool IsComplete()
     {
-        return;
+        if (_amountCompleted == _target)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     public override string GetDetailsString()
     {
-        return _amountCompleted.ToString();
+            return base.GetDetailsString() + $" (Completed {_amountCompleted}/{_target} times)";
     }
     public override string GetStringRepresentation()
     {
-        return $"{_shortName}|{_description}|{_points}";
-        // missing something idk
+        return $"{nameof(ChecklistGoal)}:{_shortName}|{_description}|{_points}|{_amountCompleted}|{_target}|{_bonus}";
     }
 }

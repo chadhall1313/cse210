@@ -1,0 +1,4 @@
+200
+SimpleGoal:Wash hair|do it|10|False
+ChecklistGoal:Temple|attend the temple|100|1|10|500
+EternalGoal:Read scriptures|read for 10 minutes|50
